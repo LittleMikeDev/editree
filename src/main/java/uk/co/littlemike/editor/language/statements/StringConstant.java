@@ -1,6 +1,8 @@
 package uk.co.littlemike.editor.language.statements;
 
 import uk.co.littlemike.editor.language.statements.expressions.Expression;
+import uk.co.littlemike.editor.language.types.Type;
+import uk.co.littlemike.editor.language.types.Types;
 
 public class StringConstant implements Expression {
 
@@ -12,5 +14,10 @@ public class StringConstant implements Expression {
 
     public String getValue() {
         return value;
+    }
+
+    @Override
+    public Type getType() {
+        return Types.String;
     }
 }

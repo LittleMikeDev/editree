@@ -2,6 +2,8 @@ package uk.co.littlemike.editor.text;
 
 import org.junit.Before;
 import org.junit.Test;
+import uk.co.littlemike.editor.language.statements.InitialisedVariableDeclaration;
+import uk.co.littlemike.editor.language.statements.IntegerConstant;
 import uk.co.littlemike.editor.language.statements.VariableDeclaration;
 import uk.co.littlemike.editor.language.types.Types;
 
@@ -39,5 +41,17 @@ public class VariableDeclarationRenderingTest {
 
         // Then
         assertThat(text, equalTo("String myString;"));
+    }
+
+    @Test
+    public void shouldRenderInitialisedVariableDeclaration() {
+        // Given
+        InitialisedVariableDeclaration declaration = new InitialisedVariableDeclaration(Types.Integer, "myInt", new IntegerConstant(5));
+
+        // When
+        String text = renderer.render(declaration);
+
+        // Then
+        assertThat(text, equalTo("Integer myInt = 5;"));
     }
 }

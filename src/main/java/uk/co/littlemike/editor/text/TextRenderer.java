@@ -1,8 +1,8 @@
 package uk.co.littlemike.editor.text;
 
 import uk.co.littlemike.editor.language.statements.InitialisedVariableDeclaration;
-import uk.co.littlemike.editor.language.statements.IntegerConstant;
-import uk.co.littlemike.editor.language.statements.StringConstant;
+import uk.co.littlemike.editor.language.statements.expressions.IntegerConstant;
+import uk.co.littlemike.editor.language.statements.expressions.StringConstant;
 import uk.co.littlemike.editor.language.statements.VariableDeclaration;
 import uk.co.littlemike.editor.language.statements.expressions.Expression;
 

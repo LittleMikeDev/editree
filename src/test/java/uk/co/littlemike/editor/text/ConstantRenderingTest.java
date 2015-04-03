@@ -2,8 +2,8 @@ package uk.co.littlemike.editor.text;
 
 import org.junit.Before;
 import org.junit.Test;
-import uk.co.littlemike.editor.language.statements.IntegerConstant;
-import uk.co.littlemike.editor.language.statements.StringConstant;
+import uk.co.littlemike.editor.language.statements.expressions.IntegerConstant;
+import uk.co.littlemike.editor.language.statements.expressions.StringConstant;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;

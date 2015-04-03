@@ -5,7 +5,7 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import uk.co.littlemike.editor.language.semantics.DeclarationTypeMismatchException;
 import uk.co.littlemike.editor.language.statements.InitialisedVariableDeclaration;
-import uk.co.littlemike.editor.language.statements.StringConstant;
+import uk.co.littlemike.editor.language.statements.expressions.StringConstant;
 import uk.co.littlemike.editor.language.types.Types;
 
 public class TypeMismatchTest {

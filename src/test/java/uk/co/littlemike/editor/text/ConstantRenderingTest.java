@@ -3,6 +3,7 @@ package uk.co.littlemike.editor.text;
 import org.junit.Before;
 import org.junit.Test;
 import uk.co.littlemike.editor.language.statements.IntegerConstant;
+import uk.co.littlemike.editor.language.statements.StringConstant;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
@@ -38,5 +39,53 @@ public class ConstantRenderingTest {
 
         // Then
         assertThat(text, equalTo("-3"));
+    }
+
+    @Test
+    public void shouldRenderEmptyString() {
+        // Given
+        StringConstant string = new StringConstant("");
+
+        // When
+        String text = renderer.render(string);
+
+        // Then
+        assertThat(text, equalTo("\"\""));
+    }
+
+    @Test
+    public void shouldRenderString() {
+        // Given
+        StringConstant string = new StringConstant("Some string");
+
+        // When
+        String text = renderer.render(string);
+
+        // Then
+        assertThat(text, equalTo("\"Some string\""));
+    }
+
+    @Test
+    public void shouldEscapeDoubleQuotes() {
+        // Given
+        StringConstant string = new StringConstant("Quote -> \" <-");
+
+        // When
+        String text = renderer.render(string);
+
+        // Then
+        assertThat(text, equalTo("\"Quote -> \\\" <-\""));
+    }
+
+    @Test
+    public void shouldEscapeBackslash() {
+        // Given
+        StringConstant string = new StringConstant("Backslash -> \\ <-");
+
+        // When
+        String text = renderer.render(string);
+
+        // Then
+        assertThat(text, equalTo("\"Backslash -> \\\\ <-\""));
     }
 }

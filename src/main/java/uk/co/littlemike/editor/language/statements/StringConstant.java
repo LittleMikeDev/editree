@@ -1,6 +1,8 @@
 package uk.co.littlemike.editor.language.statements;
 
-public class StringConstant {
+import uk.co.littlemike.editor.language.statements.expressions.Expression;
+
+public class StringConstant implements Expression {
 
     private final String value;
 

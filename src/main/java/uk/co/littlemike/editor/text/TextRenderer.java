@@ -4,8 +4,19 @@ import uk.co.littlemike.editor.language.statements.InitialisedVariableDeclaratio
 import uk.co.littlemike.editor.language.statements.IntegerConstant;
 import uk.co.littlemike.editor.language.statements.StringConstant;
 import uk.co.littlemike.editor.language.statements.VariableDeclaration;
+import uk.co.littlemike.editor.language.statements.expressions.Expression;
 
 public class TextRenderer {
+    public String render(Expression expression) {
+        if (expression instanceof IntegerConstant) {
+            return render((IntegerConstant) expression);
+        }
+        if (expression instanceof StringConstant) {
+            return render((StringConstant) expression);
+        }
+        return "";
+    }
+
     public String render(IntegerConstant integer) {
         return Integer.toString(integer.getValue());
     }

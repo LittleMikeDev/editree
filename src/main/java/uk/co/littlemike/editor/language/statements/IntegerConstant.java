@@ -1,6 +1,8 @@
 package uk.co.littlemike.editor.language.statements;
 
-public class IntegerConstant {
+import uk.co.littlemike.editor.language.statements.expressions.Expression;
+
+public class IntegerConstant implements Expression {
     private final int value;
 
     public IntegerConstant(int value) {

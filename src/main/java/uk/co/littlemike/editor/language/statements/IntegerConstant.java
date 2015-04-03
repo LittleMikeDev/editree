@@ -1,4 +1,4 @@
-package uk.co.littlemike.editor.statements;
+package uk.co.littlemike.editor.language.statements;
 
 public class IntegerConstant {
     private final int value;

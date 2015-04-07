@@ -1,4 +1,4 @@
-package uk.co.littlemike.editor.language.types;
+package uk.co.littlemike.editree.language.types;
 
 public class Types {
     public static final Type Integer = new Type("Integer");

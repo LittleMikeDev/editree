@@ -1,8 +1,7 @@
-package uk.co.littlemike.editor.language.statements.expressions;
+package uk.co.littlemike.editree.language.statements.expressions;
 
-import uk.co.littlemike.editor.language.statements.expressions.Expression;
-import uk.co.littlemike.editor.language.types.Type;
-import uk.co.littlemike.editor.language.types.Types;
+import uk.co.littlemike.editree.language.types.Type;
+import uk.co.littlemike.editree.language.types.Types;
 
 public class StringConstant implements Expression {
 

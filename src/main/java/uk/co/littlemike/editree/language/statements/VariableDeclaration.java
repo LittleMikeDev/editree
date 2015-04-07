@@ -1,6 +1,6 @@
-package uk.co.littlemike.editor.language.statements;
+package uk.co.littlemike.editree.language.statements;
 
-import uk.co.littlemike.editor.language.types.Type;
+import uk.co.littlemike.editree.language.types.Type;
 
 public class VariableDeclaration {
     private final Type type;

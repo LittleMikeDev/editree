@@ -1,4 +1,4 @@
-package uk.co.littlemike.editor.language.types;
+package uk.co.littlemike.editree.language.types;
 
 public class Type {
     private final String name;

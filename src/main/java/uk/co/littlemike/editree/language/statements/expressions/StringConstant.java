@@ -1,5 +1,6 @@
 package uk.co.littlemike.editree.language.statements.expressions;
 
+import uk.co.littlemike.editree.language.ConstructVisitor;
 import uk.co.littlemike.editree.language.types.Type;
 import uk.co.littlemike.editree.language.types.Types;
 
@@ -18,5 +19,10 @@ public class StringConstant implements Expression {
     @Override
     public Type getType() {
         return Types.String;
+    }
+
+    @Override
+    public void visit(ConstructVisitor visitor) {
+        visitor.visit(this);
     }
 }

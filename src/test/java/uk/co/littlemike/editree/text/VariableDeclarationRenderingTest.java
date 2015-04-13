@@ -26,10 +26,10 @@ public class VariableDeclarationRenderingTest {
         VariableDeclaration declaration = new VariableDeclaration(Types.Integer, "myVariable");
 
         // When
-        String text = renderer.render(declaration);
+        renderer.visit(declaration);
 
         // Then
-        assertThat(text, equalTo("Integer myVariable;"));
+        assertThat(renderer.getText(), equalTo("Integer myVariable;"));
     }
 
     @Test
@@ -38,10 +38,10 @@ public class VariableDeclarationRenderingTest {
         VariableDeclaration declaration = new VariableDeclaration(Types.String, "myString");
 
         // When
-        String text = renderer.render(declaration);
+        renderer.visit(declaration);
 
         // Then
-        assertThat(text, equalTo("String myString;"));
+        assertThat(renderer.getText(), equalTo("String myString;"));
     }
 
     @Test
@@ -50,10 +50,10 @@ public class VariableDeclarationRenderingTest {
         InitialisedVariableDeclaration declaration = new InitialisedVariableDeclaration(Types.Integer, "myInt", new IntegerConstant(5));
 
         // When
-        String text = renderer.render(declaration);
+        renderer.visit(declaration);
 
         // Then
-        assertThat(text, equalTo("Integer myInt = 5;"));
+        assertThat(renderer.getText(), equalTo("Integer myInt = 5;"));
     }
 
     @Test
@@ -62,9 +62,9 @@ public class VariableDeclarationRenderingTest {
         InitialisedVariableDeclaration declaration = new InitialisedVariableDeclaration(Types.String, "myString", new StringConstant("Hello world!"));
 
         // When
-        String text = renderer.render(declaration);
+        renderer.visit(declaration);
 
         // Then
-        assertThat(text, equalTo("String myString = \"Hello world!\";"));
+        assertThat(renderer.getText(), equalTo("String myString = \"Hello world!\";"));
     }
 }

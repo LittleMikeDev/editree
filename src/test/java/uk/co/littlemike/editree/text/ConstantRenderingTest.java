@@ -23,10 +23,10 @@ public class ConstantRenderingTest {
         IntegerConstant integer = new IntegerConstant(5);
 
         // When
-        String text = renderer.render(integer);
+        renderer.visit(integer);
 
         // Then
-        assertThat(text, equalTo("5"));
+        assertThat(renderer.getText(), equalTo("5"));
     }
 
     @Test
@@ -35,10 +35,10 @@ public class ConstantRenderingTest {
         IntegerConstant integer = new IntegerConstant(-3);
 
         // When
-        String text = renderer.render(integer);
+        renderer.visit(integer);
 
         // Then
-        assertThat(text, equalTo("-3"));
+        assertThat(renderer.getText(), equalTo("-3"));
     }
 
     @Test
@@ -47,10 +47,10 @@ public class ConstantRenderingTest {
         StringConstant string = new StringConstant("");
 
         // When
-        String text = renderer.render(string);
+        renderer.visit(string);
 
         // Then
-        assertThat(text, equalTo("\"\""));
+        assertThat(renderer.getText(), equalTo("\"\""));
     }
 
     @Test
@@ -59,10 +59,10 @@ public class ConstantRenderingTest {
         StringConstant string = new StringConstant("Some string");
 
         // When
-        String text = renderer.render(string);
+        renderer.visit(string);
 
         // Then
-        assertThat(text, equalTo("\"Some string\""));
+        assertThat(renderer.getText(), equalTo("\"Some string\""));
     }
 
     @Test
@@ -71,10 +71,10 @@ public class ConstantRenderingTest {
         StringConstant string = new StringConstant("Quote -> \" <-");
 
         // When
-        String text = renderer.render(string);
+        renderer.visit(string);
 
         // Then
-        assertThat(text, equalTo("\"Quote -> \\\" <-\""));
+        assertThat(renderer.getText(), equalTo("\"Quote -> \\\" <-\""));
     }
 
     @Test
@@ -83,9 +83,9 @@ public class ConstantRenderingTest {
         StringConstant string = new StringConstant("Backslash -> \\ <-");
 
         // When
-        String text = renderer.render(string);
+        renderer.visit(string);
 
         // Then
-        assertThat(text, equalTo("\"Backslash -> \\\\ <-\""));
+        assertThat(renderer.getText(), equalTo("\"Backslash -> \\\\ <-\""));
     }
 }

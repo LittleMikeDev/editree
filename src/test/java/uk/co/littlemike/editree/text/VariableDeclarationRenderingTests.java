@@ -2,6 +2,7 @@ package uk.co.littlemike.editree.text;
 
 import org.junit.Before;
 import org.junit.Test;
+import uk.co.littlemike.editree.language.expressions.BooleanConstant;
 import uk.co.littlemike.editree.language.statements.InitialisedVariableDeclaration;
 import uk.co.littlemike.editree.language.expressions.IntegerConstant;
 import uk.co.littlemike.editree.language.expressions.StringConstant;
@@ -45,6 +46,18 @@ public class VariableDeclarationRenderingTests {
     }
 
     @Test
+    public void shouldRenderUninitialisedBooleanDeclaration() {
+        // Given
+        VariableDeclaration declaration = new VariableDeclaration(Types.Boolean, "myBool");
+
+        // When
+        renderer.visit(declaration);
+
+        // Then
+        assertThat(renderer.getText(), equalTo("Boolean myBool;"));
+    }
+
+    @Test
     public void shouldRenderInitialisedIntegerVariableDeclaration() {
         // Given
         InitialisedVariableDeclaration declaration = new InitialisedVariableDeclaration(Types.Integer, "myInt", new IntegerConstant(5));
@@ -66,5 +79,17 @@ public class VariableDeclarationRenderingTests {
 
         // Then
         assertThat(renderer.getText(), equalTo("String myString = \"Hello world!\";"));
+    }
+
+    @Test
+    public void shouldRenderInitialisedBooleanVariableDeclaration() {
+        // Given
+        InitialisedVariableDeclaration declaration = new InitialisedVariableDeclaration(Types.Boolean, "myBool", BooleanConstant.TRUE);
+
+        // When
+        renderer.visit(declaration);
+
+        // Then
+        assertThat(renderer.getText(), equalTo("Boolean myBool = true;"));
     }
 }

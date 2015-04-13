@@ -2,6 +2,7 @@ package uk.co.littlemike.editree.text;
 
 import org.junit.Before;
 import org.junit.Test;
+import uk.co.littlemike.editree.language.expressions.BooleanConstant;
 import uk.co.littlemike.editree.language.expressions.IntegerConstant;
 import uk.co.littlemike.editree.language.expressions.StringConstant;
 
@@ -39,6 +40,30 @@ public class ConstantRenderingTests {
 
         // Then
         assertThat(renderer.getText(), equalTo("-3"));
+    }
+
+    @Test
+    public void shouldRenderTrueConstant() {
+        // Given
+        BooleanConstant bool = BooleanConstant.TRUE;
+
+        // When
+        renderer.visit(bool);
+
+        // Then
+        assertThat(renderer.getText(), equalTo("true"));
+    }
+
+    @Test
+    public void shouldRenderFalseConstant() {
+        // Given
+        BooleanConstant bool = BooleanConstant.FALSE;
+
+        // When
+        renderer.visit(bool);
+
+        // Then
+        assertThat(renderer.getText(), equalTo("false"));
     }
 
     @Test

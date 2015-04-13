@@ -1,5 +1,6 @@
 package uk.co.littlemike.editree.text;
 
+import uk.co.littlemike.editree.language.expressions.BooleanConstant;
 import uk.co.littlemike.editree.language.statements.InitialisedVariableDeclaration;
 import uk.co.littlemike.editree.language.statements.Statement;
 import uk.co.littlemike.editree.language.statements.StatementVisitor;
@@ -21,6 +22,11 @@ public class TextRenderer implements ExpressionVisitor, StatementVisitor {
     @Override
     public void visit(StringConstant string) {
         text.append('"' + escapeQuotesAndSlashes(string) + '"');
+    }
+
+    @Override
+    public void visit(BooleanConstant booleanConstant) {
+        text.append(Boolean.toString(booleanConstant.getValue()));
     }
 
     @Override

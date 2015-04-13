@@ -1,6 +1,5 @@
 package uk.co.littlemike.editree.language.statements;
 
-import uk.co.littlemike.editree.language.ConstructVisitor;
 import uk.co.littlemike.editree.language.semantics.DeclarationTypeMismatchException;
 import uk.co.littlemike.editree.language.statements.expressions.Expression;
 import uk.co.littlemike.editree.language.types.Type;
@@ -23,7 +22,7 @@ public class InitialisedVariableDeclaration extends VariableDeclaration {
     }
 
     @Override
-    public void visit(ConstructVisitor visitor) {
+    public void visit(StatementVisitor visitor) {
         visitor.visit(this);
     }
 }

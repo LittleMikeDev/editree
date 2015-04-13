@@ -1,6 +1,6 @@
 package uk.co.littlemike.editree.language.statements;
 
-import uk.co.littlemike.editree.language.Construct;
+import uk.co.littlemike.editree.language.Visitable;
 
-public interface Statement extends Construct{
+public interface Statement extends Visitable<StatementVisitor> {
 }

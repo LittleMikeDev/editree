@@ -1,14 +1,15 @@
 package uk.co.littlemike.editree.text;
 
-import uk.co.littlemike.editree.language.ConstructVisitor;
 import uk.co.littlemike.editree.language.statements.InitialisedVariableDeclaration;
 import uk.co.littlemike.editree.language.statements.Statement;
+import uk.co.littlemike.editree.language.statements.StatementVisitor;
 import uk.co.littlemike.editree.language.statements.VariableDeclaration;
+import uk.co.littlemike.editree.language.statements.expressions.ExpressionVisitor;
 import uk.co.littlemike.editree.language.statements.expressions.IntegerConstant;
 import uk.co.littlemike.editree.language.statements.expressions.StringConstant;
 import uk.co.littlemike.editree.language.structures.Block;
 
-public class TextRenderer implements ConstructVisitor {
+public class TextRenderer implements ExpressionVisitor, StatementVisitor {
 
     private StringBuilder text = new StringBuilder();
 
@@ -34,7 +35,6 @@ public class TextRenderer implements ConstructVisitor {
         text.append(";");
     }
 
-    @Override
     public void visit(Block block) {
         if (block.isEmpty()) {
             text.append("{ }\n");

@@ -1,6 +1,5 @@
 package uk.co.littlemike.editree.language.statements.expressions;
 
-import uk.co.littlemike.editree.language.ConstructVisitor;
 import uk.co.littlemike.editree.language.types.Type;
 import uk.co.littlemike.editree.language.types.Types;
 
@@ -21,7 +20,7 @@ public class IntegerConstant implements Expression {
     }
 
     @Override
-    public void visit(ConstructVisitor visitor) {
+    public void visit(ExpressionVisitor visitor) {
         visitor.visit(this);
     }
 }

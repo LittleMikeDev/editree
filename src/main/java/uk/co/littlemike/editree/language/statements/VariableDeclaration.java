@@ -1,6 +1,5 @@
 package uk.co.littlemike.editree.language.statements;
 
-import uk.co.littlemike.editree.language.ConstructVisitor;
 import uk.co.littlemike.editree.language.types.Type;
 
 public class VariableDeclaration implements Statement {
@@ -21,7 +20,7 @@ public class VariableDeclaration implements Statement {
     }
 
     @Override
-    public void visit(ConstructVisitor visitor) {
+    public void visit(StatementVisitor visitor) {
         visitor.visit(this);
     }
 }

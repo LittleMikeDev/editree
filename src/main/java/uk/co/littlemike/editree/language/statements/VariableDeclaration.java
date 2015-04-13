@@ -1,8 +1,9 @@
 package uk.co.littlemike.editree.language.statements;
 
+import uk.co.littlemike.editree.language.ConstructVisitor;
 import uk.co.littlemike.editree.language.types.Type;
 
-public class VariableDeclaration {
+public class VariableDeclaration implements Statement {
     private final Type type;
     private final String name;
 
@@ -17,5 +18,10 @@ public class VariableDeclaration {
 
     public Type getType() {
         return type;
+    }
+
+    @Override
+    public void visit(ConstructVisitor visitor) {
+        visitor.visit(this);
     }
 }

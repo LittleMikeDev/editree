@@ -11,7 +11,7 @@ import uk.co.littlemike.editree.language.types.Types;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
-public class VariableDeclarationRenderingTest {
+public class VariableDeclarationRenderingTests {
 
     private TextRenderer renderer;
 

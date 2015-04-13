@@ -8,7 +8,7 @@ import uk.co.littlemike.editree.language.statements.InitialisedVariableDeclarati
 import uk.co.littlemike.editree.language.statements.expressions.StringConstant;
 import uk.co.littlemike.editree.language.types.Types;
 
-public class TypeMismatchTest {
+public class TypeMismatchTests {
 
     @Rule
     public ExpectedException exception = ExpectedException.none();

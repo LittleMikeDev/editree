@@ -8,7 +8,7 @@ import uk.co.littlemike.editree.language.statements.expressions.StringConstant;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
-public class ConstantRenderingTest {
+public class ConstantRenderingTests {
 
     private TextRenderer renderer;
 

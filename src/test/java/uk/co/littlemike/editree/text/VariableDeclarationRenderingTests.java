@@ -3,8 +3,8 @@ package uk.co.littlemike.editree.text;
 import org.junit.Before;
 import org.junit.Test;
 import uk.co.littlemike.editree.language.statements.InitialisedVariableDeclaration;
-import uk.co.littlemike.editree.language.statements.expressions.IntegerConstant;
-import uk.co.littlemike.editree.language.statements.expressions.StringConstant;
+import uk.co.littlemike.editree.language.expressions.IntegerConstant;
+import uk.co.littlemike.editree.language.expressions.StringConstant;
 import uk.co.littlemike.editree.language.statements.VariableDeclaration;
 import uk.co.littlemike.editree.language.types.Types;
 

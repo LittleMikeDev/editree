@@ -4,10 +4,10 @@ import uk.co.littlemike.editree.language.statements.InitialisedVariableDeclarati
 import uk.co.littlemike.editree.language.statements.Statement;
 import uk.co.littlemike.editree.language.statements.StatementVisitor;
 import uk.co.littlemike.editree.language.statements.VariableDeclaration;
-import uk.co.littlemike.editree.language.statements.expressions.ExpressionVisitor;
-import uk.co.littlemike.editree.language.statements.expressions.IntegerConstant;
-import uk.co.littlemike.editree.language.statements.expressions.StringConstant;
-import uk.co.littlemike.editree.language.structures.Block;
+import uk.co.littlemike.editree.language.expressions.ExpressionVisitor;
+import uk.co.littlemike.editree.language.expressions.IntegerConstant;
+import uk.co.littlemike.editree.language.expressions.StringConstant;
+import uk.co.littlemike.editree.language.statements.structures.Block;
 
 public class TextRenderer implements ExpressionVisitor, StatementVisitor {
 

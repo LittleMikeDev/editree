@@ -1,4 +1,4 @@
-package uk.co.littlemike.editree.language.statements.expressions;
+package uk.co.littlemike.editree.language.expressions;
 
 public interface ExpressionVisitor {
 

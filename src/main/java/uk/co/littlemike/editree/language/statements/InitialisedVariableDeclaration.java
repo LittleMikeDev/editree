@@ -1,7 +1,7 @@
 package uk.co.littlemike.editree.language.statements;
 
 import uk.co.littlemike.editree.language.semantics.DeclarationTypeMismatchException;
-import uk.co.littlemike.editree.language.statements.expressions.Expression;
+import uk.co.littlemike.editree.language.expressions.Expression;
 import uk.co.littlemike.editree.language.types.Type;
 
 public class InitialisedVariableDeclaration extends VariableDeclaration {

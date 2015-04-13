@@ -4,8 +4,8 @@ import org.junit.Before;
 import org.junit.Test;
 import uk.co.littlemike.editree.language.statements.InitialisedVariableDeclaration;
 import uk.co.littlemike.editree.language.statements.VariableDeclaration;
-import uk.co.littlemike.editree.language.statements.expressions.IntegerConstant;
-import uk.co.littlemike.editree.language.structures.Block;
+import uk.co.littlemike.editree.language.expressions.IntegerConstant;
+import uk.co.littlemike.editree.language.statements.structures.Block;
 import uk.co.littlemike.editree.language.types.Types;
 
 import static org.hamcrest.MatcherAssert.assertThat;

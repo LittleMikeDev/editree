@@ -1,4 +1,4 @@
-package uk.co.littlemike.editree.language.statements.expressions;
+package uk.co.littlemike.editree.language.expressions;
 
 import uk.co.littlemike.editree.language.Visitable;
 import uk.co.littlemike.editree.language.types.Type;

@@ -1,4 +1,4 @@
-package uk.co.littlemike.editree.language.structures;
+package uk.co.littlemike.editree.language.statements.structures;
 
 import uk.co.littlemike.editree.language.statements.Statement;
 

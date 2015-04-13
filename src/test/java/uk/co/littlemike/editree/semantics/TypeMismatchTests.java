@@ -5,7 +5,7 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import uk.co.littlemike.editree.language.semantics.DeclarationTypeMismatchException;
 import uk.co.littlemike.editree.language.statements.InitialisedVariableDeclaration;
-import uk.co.littlemike.editree.language.statements.expressions.StringConstant;
+import uk.co.littlemike.editree.language.expressions.StringConstant;
 import uk.co.littlemike.editree.language.types.Types;
 
 public class TypeMismatchTests {

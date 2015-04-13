@@ -1,23 +1,22 @@
-package uk.co.littlemike.editree.language.statements.expressions;
+package uk.co.littlemike.editree.language.expressions;
 
 import uk.co.littlemike.editree.language.types.Type;
 import uk.co.littlemike.editree.language.types.Types;
 
-public class StringConstant implements Expression {
+public class IntegerConstant implements Expression {
+    private final int value;
 
-    private final String value;
-
-    public StringConstant(String value) {
+    public IntegerConstant(int value) {
         this.value = value;
     }
 
-    public String getValue() {
+    public int getValue() {
         return value;
     }
 
     @Override
     public Type getType() {
-        return Types.String;
+        return Types.Integer;
     }
 
     @Override

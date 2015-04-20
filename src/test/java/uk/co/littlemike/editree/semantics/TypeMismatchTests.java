@@ -4,7 +4,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import uk.co.littlemike.editree.language.semantics.DeclarationTypeMismatchException;
-import uk.co.littlemike.editree.language.statements.InitialisedVariableDeclaration;
+import uk.co.littlemike.editree.language.statements.VariableDeclaration;
 import uk.co.littlemike.editree.language.expressions.StringConstant;
 import uk.co.littlemike.editree.language.types.Types;
 
@@ -23,6 +23,6 @@ public class TypeMismatchTests {
         exception.expectMessage("Declaration of myVar has incompatible types. Expected: Integer, Got: String");
 
         // When
-        new InitialisedVariableDeclaration(Types.Integer, "myVar", string);
+        new VariableDeclaration(Types.Integer, "myVar", string);
     }
 }

@@ -1,13 +1,12 @@
 package uk.co.littlemike.editree.text;
 
 import uk.co.littlemike.editree.language.expressions.BooleanConstant;
-import uk.co.littlemike.editree.language.statements.InitialisedVariableDeclaration;
-import uk.co.littlemike.editree.language.statements.Statement;
-import uk.co.littlemike.editree.language.statements.StatementVisitor;
-import uk.co.littlemike.editree.language.statements.VariableDeclaration;
 import uk.co.littlemike.editree.language.expressions.ExpressionVisitor;
 import uk.co.littlemike.editree.language.expressions.IntegerConstant;
 import uk.co.littlemike.editree.language.expressions.StringConstant;
+import uk.co.littlemike.editree.language.statements.VariableDeclaration;
+import uk.co.littlemike.editree.language.statements.Statement;
+import uk.co.littlemike.editree.language.statements.StatementVisitor;
 import uk.co.littlemike.editree.language.statements.structures.Block;
 
 public class TextRenderer implements ExpressionVisitor, StatementVisitor {
@@ -31,13 +30,11 @@ public class TextRenderer implements ExpressionVisitor, StatementVisitor {
 
     @Override
     public void visit(VariableDeclaration declaration) {
-        text.append(typeAndName(declaration) + ";");
-    }
-
-    @Override
-    public void visit(InitialisedVariableDeclaration declaration) {
-        text.append(typeAndName(declaration) + " = ");
-        declaration.getInitialValue().visit(this);
+        text.append(declaration.getType().getName() + " " + declaration.getName());
+        declaration.getInitialValue().ifPresent((initialValue) -> {
+                text.append(" = ");
+                initialValue.visit(this);
+        });
         text.append(";");
     }
 
@@ -57,10 +54,6 @@ public class TextRenderer implements ExpressionVisitor, StatementVisitor {
             statement.visit(this);
             text.append('\n');
         }
-    }
-
-    private String typeAndName(VariableDeclaration declaration) {
-        return declaration.getType().getName() + " " + declaration.getName();
     }
 
     private String escapeQuotesAndSlashes(StringConstant string) {

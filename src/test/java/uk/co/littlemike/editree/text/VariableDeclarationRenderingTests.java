@@ -3,7 +3,6 @@ package uk.co.littlemike.editree.text;
 import org.junit.Before;
 import org.junit.Test;
 import uk.co.littlemike.editree.language.expressions.BooleanConstant;
-import uk.co.littlemike.editree.language.statements.InitialisedVariableDeclaration;
 import uk.co.littlemike.editree.language.expressions.IntegerConstant;
 import uk.co.littlemike.editree.language.expressions.StringConstant;
 import uk.co.littlemike.editree.language.statements.VariableDeclaration;
@@ -60,7 +59,7 @@ public class VariableDeclarationRenderingTests {
     @Test
     public void shouldRenderInitialisedIntegerVariableDeclaration() {
         // Given
-        InitialisedVariableDeclaration declaration = new InitialisedVariableDeclaration(Types.Integer, "myInt", new IntegerConstant(5));
+        VariableDeclaration declaration = new VariableDeclaration(Types.Integer, "myInt", new IntegerConstant(5));
 
         // When
         renderer.visit(declaration);
@@ -72,7 +71,7 @@ public class VariableDeclarationRenderingTests {
     @Test
     public void shouldRenderInitialisedStringVariableDeclaration() {
         // Given
-        InitialisedVariableDeclaration declaration = new InitialisedVariableDeclaration(Types.String, "myString", new StringConstant("Hello world!"));
+        VariableDeclaration declaration = new VariableDeclaration(Types.String, "myString", new StringConstant("Hello world!"));
 
         // When
         renderer.visit(declaration);
@@ -84,7 +83,7 @@ public class VariableDeclarationRenderingTests {
     @Test
     public void shouldRenderInitialisedBooleanVariableDeclaration() {
         // Given
-        InitialisedVariableDeclaration declaration = new InitialisedVariableDeclaration(Types.Boolean, "myBool", BooleanConstant.TRUE);
+        VariableDeclaration declaration = new VariableDeclaration(Types.Boolean, "myBool", BooleanConstant.TRUE);
 
         // When
         renderer.visit(declaration);

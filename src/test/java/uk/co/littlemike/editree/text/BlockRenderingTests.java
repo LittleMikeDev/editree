@@ -2,9 +2,8 @@ package uk.co.littlemike.editree.text;
 
 import org.junit.Before;
 import org.junit.Test;
-import uk.co.littlemike.editree.language.statements.InitialisedVariableDeclaration;
-import uk.co.littlemike.editree.language.statements.VariableDeclaration;
 import uk.co.littlemike.editree.language.expressions.IntegerConstant;
+import uk.co.littlemike.editree.language.statements.VariableDeclaration;
 import uk.co.littlemike.editree.language.statements.structures.Block;
 import uk.co.littlemike.editree.language.types.Types;
 
@@ -51,7 +50,7 @@ public class BlockRenderingTests {
     public void shouldRenderBlockWithMultipleStatements() {
         // Given
         Block block = new Block(
-                new InitialisedVariableDeclaration(Types.Integer, "myInt", new IntegerConstant(2)),
+                new VariableDeclaration(Types.Integer, "myInt", new IntegerConstant(2)),
                 new VariableDeclaration(Types.String, "myString"));
 
         // When

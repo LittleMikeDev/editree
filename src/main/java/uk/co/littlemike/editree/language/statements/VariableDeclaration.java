@@ -6,7 +6,7 @@ import uk.co.littlemike.editree.language.types.Type;
 
 import java.util.Optional;
 
-public class VariableDeclaration implements Statement {
+public class VariableDeclaration implements SimpleStatement {
     private final Type type;
     private final String name;
     private final Optional<Expression> initialValue;
@@ -40,7 +40,7 @@ public class VariableDeclaration implements Statement {
     }
 
     @Override
-    public void visit(StatementVisitor visitor) {
+    public void visit(SimpleStatementVisitor visitor) {
         visitor.visit(this);
     }
 }

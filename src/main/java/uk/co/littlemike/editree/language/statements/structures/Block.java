@@ -1,15 +1,15 @@
 package uk.co.littlemike.editree.language.statements.structures;
 
-import uk.co.littlemike.editree.language.statements.Statement;
+import uk.co.littlemike.editree.language.statements.SimpleStatement;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class Block {
 
-    private final List<Statement> statements;
+    private final List<SimpleStatement> statements;
 
-    public Block(Statement... statements) {
+    public Block(SimpleStatement... statements) {
         this.statements = Arrays.asList(statements);
     }
 
@@ -17,7 +17,7 @@ public class Block {
         return statements.isEmpty();
     }
 
-    public List<Statement> getStatements() {
+    public List<SimpleStatement> getStatements() {
         return statements;
     }
 }

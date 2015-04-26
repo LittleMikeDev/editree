@@ -12,11 +12,13 @@ import static org.hamcrest.Matchers.equalTo;
 
 public class BlockRenderingTests {
 
-    private TextRenderer renderer;
+    private StringBuilder blockText;
+    private BlockRenderer renderer;
 
     @Before
     public void setUp() {
-        renderer = new TextRenderer();
+        blockText = new StringBuilder();
+        renderer = new BlockRenderer();
     }
 
     @Test
@@ -25,10 +27,10 @@ public class BlockRenderingTests {
         Block block = new Block();
 
         // When
-        renderer.visit(block);
+        renderer.render(blockText, block);
 
         // Then
-        assertThat(renderer.getText(), equalTo("{ }\n"));
+        assertThat(blockText.toString(), equalTo("{ }\n"));
     }
 
     @Test
@@ -38,10 +40,10 @@ public class BlockRenderingTests {
         Block block = new Block(declaration);
 
         // When
-        renderer.visit(block);
+        renderer.render(blockText, block);
 
         // Then
-        assertThat(renderer.getText(), equalTo("{\n" +
+        assertThat(blockText.toString(), equalTo("{\n" +
                 "Integer myInt;\n" +
                 "}\n"));
     }
@@ -54,10 +56,10 @@ public class BlockRenderingTests {
                 new VariableDeclaration(Types.String, "myString"));
 
         // When
-        renderer.visit(block);
+        renderer.render(blockText, block);
 
         // Then
-        assertThat(renderer.getText(), equalTo("{\n" +
+        assertThat(blockText.toString(), equalTo("{\n" +
                 "Integer myInt = 2;\n" +
                 "String myString;\n" +
                 "}\n"));

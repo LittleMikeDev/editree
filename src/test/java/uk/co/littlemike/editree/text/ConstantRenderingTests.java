@@ -11,11 +11,11 @@ import static org.hamcrest.Matchers.equalTo;
 
 public class ConstantRenderingTests {
 
-    private TextRenderer renderer;
+    private ExpressionRenderer renderer;
 
     @Before
     public void setUp() {
-        renderer = new TextRenderer();
+        renderer = new ExpressionRenderer();
     }
 
     @Test
@@ -23,11 +23,8 @@ public class ConstantRenderingTests {
         // Given
         IntegerConstant integer = new IntegerConstant(5);
 
-        // When
-        renderer.visit(integer);
-
         // Then
-        assertThat(renderer.getText(), equalTo("5"));
+        assertThat(renderer.render(integer), equalTo("5"));
     }
 
     @Test
@@ -35,11 +32,8 @@ public class ConstantRenderingTests {
         // Given
         IntegerConstant integer = new IntegerConstant(-3);
 
-        // When
-        renderer.visit(integer);
-
         // Then
-        assertThat(renderer.getText(), equalTo("-3"));
+        assertThat(renderer.render(integer), equalTo("-3"));
     }
 
     @Test
@@ -47,11 +41,8 @@ public class ConstantRenderingTests {
         // Given
         BooleanConstant bool = BooleanConstant.TRUE;
 
-        // When
-        renderer.visit(bool);
-
         // Then
-        assertThat(renderer.getText(), equalTo("true"));
+        assertThat(renderer.render(bool), equalTo("true"));
     }
 
     @Test
@@ -59,11 +50,8 @@ public class ConstantRenderingTests {
         // Given
         BooleanConstant bool = BooleanConstant.FALSE;
 
-        // When
-        renderer.visit(bool);
-
         // Then
-        assertThat(renderer.getText(), equalTo("false"));
+        assertThat(renderer.render(bool), equalTo("false"));
     }
 
     @Test
@@ -71,11 +59,8 @@ public class ConstantRenderingTests {
         // Given
         StringConstant string = new StringConstant("");
 
-        // When
-        renderer.visit(string);
-
         // Then
-        assertThat(renderer.getText(), equalTo("\"\""));
+        assertThat(renderer.render(string), equalTo("\"\""));
     }
 
     @Test
@@ -83,11 +68,8 @@ public class ConstantRenderingTests {
         // Given
         StringConstant string = new StringConstant("Some string");
 
-        // When
-        renderer.visit(string);
-
         // Then
-        assertThat(renderer.getText(), equalTo("\"Some string\""));
+        assertThat(renderer.render(string), equalTo("\"Some string\""));
     }
 
     @Test
@@ -95,11 +77,8 @@ public class ConstantRenderingTests {
         // Given
         StringConstant string = new StringConstant("Quote -> \" <-");
 
-        // When
-        renderer.visit(string);
-
         // Then
-        assertThat(renderer.getText(), equalTo("\"Quote -> \\\" <-\""));
+        assertThat(renderer.render(string), equalTo("\"Quote -> \\\" <-\""));
     }
 
     @Test
@@ -107,10 +86,7 @@ public class ConstantRenderingTests {
         // Given
         StringConstant string = new StringConstant("Backslash -> \\ <-");
 
-        // When
-        renderer.visit(string);
-
         // Then
-        assertThat(renderer.getText(), equalTo("\"Backslash -> \\\\ <-\""));
+        assertThat(renderer.render(string), equalTo("\"Backslash -> \\\\ <-\""));
     }
 }

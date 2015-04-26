@@ -1,40 +1,22 @@
 package uk.co.littlemike.editree.text;
 
-import uk.co.littlemike.editree.language.expressions.BooleanConstant;
-import uk.co.littlemike.editree.language.expressions.ExpressionVisitor;
-import uk.co.littlemike.editree.language.expressions.IntegerConstant;
-import uk.co.littlemike.editree.language.expressions.StringConstant;
-import uk.co.littlemike.editree.language.statements.VariableDeclaration;
 import uk.co.littlemike.editree.language.statements.Statement;
 import uk.co.littlemike.editree.language.statements.StatementVisitor;
+import uk.co.littlemike.editree.language.statements.VariableDeclaration;
 import uk.co.littlemike.editree.language.statements.structures.Block;
 
-public class TextRenderer implements ExpressionVisitor, StatementVisitor {
+public class TextRenderer implements StatementVisitor {
 
+    private ExpressionRenderer expressionRenderer = new ExpressionRenderer();
     private StringBuilder text = new StringBuilder();
-
-    @Override
-    public void visit(IntegerConstant integer) {
-        text.append(Integer.toString(integer.getValue()));
-    }
-
-    @Override
-    public void visit(StringConstant string) {
-        text.append('"' + escapeQuotesAndSlashes(string) + '"');
-    }
-
-    @Override
-    public void visit(BooleanConstant booleanConstant) {
-        text.append(Boolean.toString(booleanConstant.getValue()));
-    }
 
     @Override
     public void visit(VariableDeclaration declaration) {
         text.append(declaration.getType().getName() + " " + declaration.getName());
-        declaration.getInitialValue().ifPresent((initialValue) -> {
-                text.append(" = ");
-                initialValue.visit(this);
-        });
+        declaration.getInitialValue().ifPresent((initialValue) ->
+                text.append(" = ")
+                    .append (expressionRenderer.render(initialValue))
+        );
         text.append(";");
     }
 
@@ -54,12 +36,6 @@ public class TextRenderer implements ExpressionVisitor, StatementVisitor {
             statement.visit(this);
             text.append('\n');
         }
-    }
-
-    private String escapeQuotesAndSlashes(StringConstant string) {
-        return string.getValue()
-                .replace("\\", "\\\\")
-                .replace("\"", "\\\"");
     }
 
     public String getText() {

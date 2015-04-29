@@ -26,7 +26,7 @@ public class VariableDeclarationRenderingTests {
         VariableDeclaration declaration = new VariableDeclaration(Types.Integer, "myVariable");
 
         // Then
-        assertThat(renderer.render(declaration), equalTo("Integer myVariable;"));
+        assertThat(renderer.render(declaration), equalTo("Integer myVariable"));
     }
 
     @Test
@@ -35,7 +35,7 @@ public class VariableDeclarationRenderingTests {
         VariableDeclaration declaration = new VariableDeclaration(Types.String, "myString");
 
         // Then
-        assertThat(renderer.render(declaration), equalTo("String myString;"));
+        assertThat(renderer.render(declaration), equalTo("String myString"));
     }
 
     @Test
@@ -44,7 +44,7 @@ public class VariableDeclarationRenderingTests {
         VariableDeclaration declaration = new VariableDeclaration(Types.Boolean, "myBool");
 
         // Then
-        assertThat(renderer.render(declaration), equalTo("Boolean myBool;"));
+        assertThat(renderer.render(declaration), equalTo("Boolean myBool"));
     }
 
     @Test
@@ -53,7 +53,7 @@ public class VariableDeclarationRenderingTests {
         VariableDeclaration declaration = new VariableDeclaration(Types.Integer, "myInt", new IntegerConstant(5));
 
         // Then
-        assertThat(renderer.render(declaration), equalTo("Integer myInt = 5;"));
+        assertThat(renderer.render(declaration), equalTo("Integer myInt = 5"));
     }
 
     @Test
@@ -62,7 +62,7 @@ public class VariableDeclarationRenderingTests {
         VariableDeclaration declaration = new VariableDeclaration(Types.String, "myString", new StringConstant("Hello world!"));
 
         // Then
-        assertThat(renderer.render(declaration), equalTo("String myString = \"Hello world!\";"));
+        assertThat(renderer.render(declaration), equalTo("String myString = \"Hello world!\""));
     }
 
     @Test
@@ -71,6 +71,6 @@ public class VariableDeclarationRenderingTests {
         VariableDeclaration declaration = new VariableDeclaration(Types.Boolean, "myBool", BooleanConstant.TRUE);
 
         // Then
-        assertThat(renderer.render(declaration), equalTo("Boolean myBool = true;"));
+        assertThat(renderer.render(declaration), equalTo("Boolean myBool = true"));
     }
 }

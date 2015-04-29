@@ -18,7 +18,6 @@ public class SimpleStatementRenderer {
                                 text.append(" = ")
                                         .append (expressionRenderer.render(initialValue))
                 );
-                text.append(";");
             }
         });
         return text.toString();

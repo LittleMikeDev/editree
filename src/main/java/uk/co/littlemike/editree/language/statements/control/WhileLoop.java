@@ -1,16 +1,17 @@
 package uk.co.littlemike.editree.language.statements.control;
 
 import uk.co.littlemike.editree.language.expressions.BooleanConstant;
-import uk.co.littlemike.editree.language.statements.VariableDeclaration;
+import uk.co.littlemike.editree.language.statements.Statement;
+import uk.co.littlemike.editree.language.statements.StatementVisitor;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class WhileLoop {
+public class WhileLoop implements Statement {
     private final BooleanConstant condition;
-    private final List<VariableDeclaration> statements;
+    private final List<Statement> statements;
 
-    public WhileLoop(BooleanConstant condition, VariableDeclaration... statements) {
+    public WhileLoop(BooleanConstant condition, Statement... statements) {
         this.condition = condition;
         this.statements = Arrays.asList(statements);
     }
@@ -19,7 +20,12 @@ public class WhileLoop {
         return condition;
     }
 
-    public List<VariableDeclaration> getStatements() {
+    public List<Statement> getStatements() {
         return statements;
+    }
+
+    @Override
+    public void visit(StatementVisitor visitor) {
+        visitor.visit(this);
     }
 }

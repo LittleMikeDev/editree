@@ -1,5 +1,6 @@
 package uk.co.littlemike.editree.text;
 
+import uk.co.littlemike.editree.language.statements.Assignment;
 import uk.co.littlemike.editree.language.statements.Statement;
 import uk.co.littlemike.editree.language.statements.StatementVisitor;
 import uk.co.littlemike.editree.language.statements.VariableDeclaration;
@@ -22,11 +23,25 @@ public class StatementRenderer {
             public void visit(WhileLoop loop) {
                 renderToString(loop, context);
             }
+
+            @Override
+            public void visit(Assignment assignment) {
+                renderToString(assignment, context);
+            }
         });
         return context.getRenderedText();
     }
 
-    public void renderToString(VariableDeclaration declaration, StatementRenderContext context) {
+    private void renderToString(Assignment assignment, StatementRenderContext context) {
+        context.appendLine(
+                assignment.getVariableName() +
+                " = " +
+                expressionRenderer.render(assignment.getValue()) +
+                ";"
+        );
+    }
+
+    private void renderToString(VariableDeclaration declaration, StatementRenderContext context) {
         StringBuilder text = new StringBuilder();
         text.append(declaration.getType().getName() + " " + declaration.getName());
         declaration.getInitialValue().ifPresent((initialValue) ->
@@ -37,7 +52,7 @@ public class StatementRenderer {
         context.appendLine(text.toString());
     }
 
-    public void renderToString(WhileLoop loop, StatementRenderContext context) {
+    private void renderToString(WhileLoop loop, StatementRenderContext context) {
         context.appendLine(String.format(
                 "while (%s) {",
                 expressionRenderer.render(loop.getCondition())

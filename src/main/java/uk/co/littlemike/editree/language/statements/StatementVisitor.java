@@ -7,4 +7,6 @@ public interface StatementVisitor {
     public void visit(VariableDeclaration declaration);
 
     public void visit(WhileLoop loop);
+
+    public void visit(Assignment assignment);
 }

@@ -42,14 +42,24 @@ public class StatementRenderer {
     }
 
     private void renderToString(VariableDeclaration declaration, StatementRenderContext context) {
-        StringBuilder text = new StringBuilder();
-        text.append(declaration.getType().getName() + " " + declaration.getName());
-        declaration.getInitialValue().ifPresent((initialValue) ->
-                        text.append(" = ")
-                                .append(expressionRenderer.render(initialValue))
-        );
-        text.append(";");
-        context.appendLine(text.toString());
+        if (declaration.hasInitialValue()) {
+            context.appendLine(
+                    declaration.getType().getName() +
+                    " " +
+                    declaration.getName() +
+                    " = " +
+                    expressionRenderer.render(declaration.getInitialValue().get()) +
+                    ";"
+            );
+        }
+        else {
+            context.appendLine(
+                    declaration.getType().getName() +
+                    " " +
+                    declaration.getName() +
+                    ";"
+            );
+        }
     }
 
     private void renderToString(WhileLoop loop, StatementRenderContext context) {

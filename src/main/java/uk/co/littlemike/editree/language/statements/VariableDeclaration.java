@@ -43,4 +43,8 @@ public class VariableDeclaration implements Statement {
     public void visit(StatementVisitor visitor) {
         visitor.visit(this);
     }
+
+    public boolean hasInitialValue() {
+        return getInitialValue().isPresent();
+    }
 }

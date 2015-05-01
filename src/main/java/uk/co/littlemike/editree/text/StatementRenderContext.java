@@ -16,8 +16,10 @@ public class StatementRenderContext {
         indent--;
     }
 
-    public void appendLine(String line) {
-        text.append(StringUtils.repeat(INDENTATION, indent)).append(line).append('\n');
+    public void appendLine(String line, Object... args) {
+        text.append(StringUtils.repeat(INDENTATION, indent))
+                .append(String.format(line, args))
+                .append('\n');
     }
 
     public String getRenderedText() {

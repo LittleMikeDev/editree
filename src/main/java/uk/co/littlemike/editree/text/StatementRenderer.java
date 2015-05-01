@@ -33,36 +33,35 @@ public class StatementRenderer {
     }
 
     private void renderToString(Assignment assignment, StatementRenderContext context) {
-        context.appendLine(String.format(
+        context.appendLine(
                 "%s = %s;",
                 assignment.getVariableName(),
                 expressionRenderer.render(assignment.getValue())
-        ));
+        );
     }
 
     private void renderToString(VariableDeclaration declaration, StatementRenderContext context) {
         if (declaration.hasInitialValue()) {
-            context.appendLine(String.format(
+            context.appendLine(
                     "%s %s = %s;",
                     declaration.getType().getName(),
                     declaration.getName(),
                     expressionRenderer.render(declaration.getInitialValue().get())
-            ));
-        }
-        else {
-            context.appendLine(String.format(
+            );
+        } else {
+            context.appendLine(
                     "%s %s;",
                     declaration.getType().getName(),
                     declaration.getName()
-            ));
+            );
         }
     }
 
     private void renderToString(WhileLoop loop, StatementRenderContext context) {
-        context.appendLine(String.format(
+        context.appendLine(
                 "while (%s) {",
                 expressionRenderer.render(loop.getCondition())
-        ));
+        );
 
         for (Statement statement : loop.getStatements()) {
             context.increaseIndent();

@@ -33,32 +33,28 @@ public class StatementRenderer {
     }
 
     private void renderToString(Assignment assignment, StatementRenderContext context) {
-        context.appendLine(
-                assignment.getVariableName() +
-                " = " +
-                expressionRenderer.render(assignment.getValue()) +
-                ";"
-        );
+        context.appendLine(String.format(
+                "%s = %s;",
+                assignment.getVariableName(),
+                expressionRenderer.render(assignment.getValue())
+        ));
     }
 
     private void renderToString(VariableDeclaration declaration, StatementRenderContext context) {
         if (declaration.hasInitialValue()) {
-            context.appendLine(
-                    declaration.getType().getName() +
-                    " " +
-                    declaration.getName() +
-                    " = " +
-                    expressionRenderer.render(declaration.getInitialValue().get()) +
-                    ";"
-            );
+            context.appendLine(String.format(
+                    "%s %s = %s;",
+                    declaration.getType().getName(),
+                    declaration.getName(),
+                    expressionRenderer.render(declaration.getInitialValue().get())
+            ));
         }
         else {
-            context.appendLine(
-                    declaration.getType().getName() +
-                    " " +
-                    declaration.getName() +
-                    ";"
-            );
+            context.appendLine(String.format(
+                    "%s %s;",
+                    declaration.getType().getName(),
+                    declaration.getName()
+            ));
         }
     }
 

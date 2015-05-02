@@ -1,7 +1,6 @@
 package uk.co.littlemike.editree.language.statements;
 
 import uk.co.littlemike.editree.language.expressions.Expression;
-import uk.co.littlemike.editree.language.semantics.DeclarationTypeMismatchException;
 import uk.co.littlemike.editree.language.types.Type;
 
 import java.util.Optional;
@@ -17,14 +16,10 @@ public class VariableDeclaration implements Statement {
         this.initialValue = Optional.empty();
     }
 
-    public VariableDeclaration(Type type, String name, Expression initialValue) {
-        this.type = type;
+    public VariableDeclaration(String name, Expression initialValue) {
+        this.type = initialValue.getType();
         this.name = name;
         this.initialValue = Optional.of(initialValue);
-
-        if (type != initialValue.getType()) {
-            throw new DeclarationTypeMismatchException(name, type, initialValue.getType());
-        }
     }
 
     public String getName() {

@@ -50,7 +50,7 @@ public class VariableDeclarationRenderingTests {
     @Test
     public void shouldRenderInitialisedIntegerVariableDeclaration() {
         // Given
-        VariableDeclaration declaration = new VariableDeclaration(Types.Integer, "myInt", new IntegerConstant(5));
+        VariableDeclaration declaration = new VariableDeclaration("myInt", new IntegerConstant(5));
 
         // Then
         assertThat(renderer.render(declaration), equalTo("Integer myInt = 5;\n"));
@@ -59,7 +59,7 @@ public class VariableDeclarationRenderingTests {
     @Test
     public void shouldRenderInitialisedStringVariableDeclaration() {
         // Given
-        VariableDeclaration declaration = new VariableDeclaration(Types.String, "myString", new StringConstant("Hello world!"));
+        VariableDeclaration declaration = new VariableDeclaration("myString", new StringConstant("Hello world!"));
 
         // Then
         assertThat(renderer.render(declaration), equalTo("String myString = \"Hello world!\";\n"));
@@ -68,7 +68,7 @@ public class VariableDeclarationRenderingTests {
     @Test
     public void shouldRenderInitialisedBooleanVariableDeclaration() {
         // Given
-        VariableDeclaration declaration = new VariableDeclaration(Types.Boolean, "myBool", BooleanConstant.TRUE);
+        VariableDeclaration declaration = new VariableDeclaration("myBool", BooleanConstant.TRUE);
 
         // Then
         assertThat(renderer.render(declaration), equalTo("Boolean myBool = true;\n"));

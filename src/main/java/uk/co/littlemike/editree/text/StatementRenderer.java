@@ -10,29 +10,30 @@ public class StatementRenderer {
     private final ExpressionRenderer expressionRenderer = new ExpressionRenderer();
 
     public String render(Statement statement) {
-        return renderWithContext(statement, new StatementRenderContext());
+        StatementRenderContext context = new StatementRenderContext();
+        renderToContext(statement, context);
+        return context.getRenderedText();
     }
 
-    private String renderWithContext(Statement statement, StatementRenderContext context) {
+    private void renderToContext(Statement statement, StatementRenderContext context) {
         statement.visit(new StatementVisitor() {
             @Override
             public void visit(VariableDeclaration declaration) {
-                renderToString(declaration, context);
+                renderDeclarationToContext(declaration, context);
             }
             @Override
             public void visit(WhileLoop loop) {
-                renderToString(loop, context);
+                renderLoopToContext(loop, context);
             }
 
             @Override
             public void visit(Assignment assignment) {
-                renderToString(assignment, context);
+                renderAssignmentToContext(assignment, context);
             }
         });
-        return context.getRenderedText();
     }
 
-    private void renderToString(Assignment assignment, StatementRenderContext context) {
+    private void renderAssignmentToContext(Assignment assignment, StatementRenderContext context) {
         context.appendLine(
                 "%s = %s;",
                 assignment.getVariableName(),
@@ -40,7 +41,7 @@ public class StatementRenderer {
         );
     }
 
-    private void renderToString(VariableDeclaration declaration, StatementRenderContext context) {
+    private void renderDeclarationToContext(VariableDeclaration declaration, StatementRenderContext context) {
         if (declaration.hasInitialValue()) {
             context.appendLine(
                     "%s %s = %s;",
@@ -57,17 +58,16 @@ public class StatementRenderer {
         }
     }
 
-    private void renderToString(WhileLoop loop, StatementRenderContext context) {
+    private void renderLoopToContext(WhileLoop loop, StatementRenderContext context) {
         context.appendLine(
                 "while (%s) {",
                 expressionRenderer.render(loop.getCondition())
         );
 
         for (Statement statement : loop.getStatements()) {
-            context.increaseIndent();
-            renderWithContext(statement, context);
-            context.decreaseIndent();
+            renderToContext(statement, context.withIncreasedIndent());
         }
+
         context.appendLine("}");
     }
 }

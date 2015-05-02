@@ -5,15 +5,16 @@ import org.apache.commons.lang3.StringUtils;
 public class StatementRenderContext {
     private static final String INDENTATION = "    ";
 
-    private int indent = 0;
-    private final StringBuilder text = new StringBuilder();
+    private final int indent;
+    private final StringBuilder text;
 
-    public void increaseIndent() {
-        indent++;
+    public StatementRenderContext() {
+        this(new StringBuilder(), 0);
     }
 
-    public void decreaseIndent() {
-        indent--;
+    public StatementRenderContext(StringBuilder text, int indent) {
+        this.text = text;
+        this.indent = indent;
     }
 
     public void appendLine(String line, Object... args) {
@@ -24,5 +25,9 @@ public class StatementRenderContext {
 
     public String getRenderedText() {
         return text.toString();
+    }
+
+    public StatementRenderContext withIncreasedIndent() {
+        return new StatementRenderContext(text, indent + 1);
     }
 }

@@ -1,10 +1,11 @@
-package uk.co.littlemike.editree.text;
+package uk.co.littlemike.editree.text.expressions;
 
 import org.junit.Before;
 import org.junit.Test;
 import uk.co.littlemike.editree.language.expressions.BooleanConstant;
 import uk.co.littlemike.editree.language.expressions.IntegerConstant;
 import uk.co.littlemike.editree.language.expressions.StringConstant;
+import uk.co.littlemike.editree.text.expressions.ExpressionRenderer;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;

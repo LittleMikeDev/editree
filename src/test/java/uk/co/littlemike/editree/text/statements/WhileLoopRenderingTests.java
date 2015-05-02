@@ -1,4 +1,4 @@
-package uk.co.littlemike.editree.text;
+package uk.co.littlemike.editree.text.statements;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -12,11 +12,11 @@ import static org.hamcrest.Matchers.equalTo;
 
 public class WhileLoopRenderingTests {
 
-    private StatementRenderer renderer;
+    private GenericStatementRenderer renderer;
 
     @Before
     public void setUp() {
-        renderer = new StatementRenderer();
+        renderer = new GenericStatementRenderer();
     }
 
     @Test

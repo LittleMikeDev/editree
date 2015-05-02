@@ -1,4 +1,4 @@
-package uk.co.littlemike.editree.text;
+package uk.co.littlemike.editree.text.expressions;
 
 import uk.co.littlemike.editree.language.expressions.*;
 

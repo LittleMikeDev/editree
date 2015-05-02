@@ -1,4 +1,4 @@
-package uk.co.littlemike.editree.text;
+package uk.co.littlemike.editree.text.statements;
 
 import org.apache.commons.lang3.StringUtils;
 

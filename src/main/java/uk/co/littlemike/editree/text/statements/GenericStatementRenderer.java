@@ -4,6 +4,7 @@ import uk.co.littlemike.editree.language.statements.Assignment;
 import uk.co.littlemike.editree.language.statements.Statement;
 import uk.co.littlemike.editree.language.statements.StatementVisitor;
 import uk.co.littlemike.editree.language.statements.VariableDeclaration;
+import uk.co.littlemike.editree.language.statements.control.IfStatement;
 import uk.co.littlemike.editree.language.statements.control.WhileLoop;
 
 public class GenericStatementRenderer implements StatementRenderer<Statement> {
@@ -11,6 +12,7 @@ public class GenericStatementRenderer implements StatementRenderer<Statement> {
     private final AssignmentRenderer assignmentRenderer = new AssignmentRenderer();
     private final VariableDeclarationRenderer declarationRenderer  = new VariableDeclarationRenderer();
     private final WhileLoopRenderer whileLoopRenderer = new WhileLoopRenderer(this);
+    private final IfRenderer ifRenderer = new IfRenderer(this);
 
     public String render(Statement statement) {
         StatementRenderContext context = new StatementRenderContext();
@@ -25,6 +27,7 @@ public class GenericStatementRenderer implements StatementRenderer<Statement> {
             public void visit(VariableDeclaration declaration) {
                 declarationRenderer.renderToContext(declaration, context);
             }
+
             @Override
             public void visit(WhileLoop loop) {
                 whileLoopRenderer.renderToContext(loop, context);
@@ -33,6 +36,11 @@ public class GenericStatementRenderer implements StatementRenderer<Statement> {
             @Override
             public void visit(Assignment assignment) {
                 assignmentRenderer.renderToContext(assignment, context);
+            }
+
+            @Override
+            public void visit(IfStatement ifStatement) {
+                ifRenderer.renderToContext(ifStatement, context);
             }
         });
     }

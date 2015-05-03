@@ -1,5 +1,6 @@
 package uk.co.littlemike.editree.language.statements;
 
+import uk.co.littlemike.editree.language.statements.control.IfStatement;
 import uk.co.littlemike.editree.language.statements.control.WhileLoop;
 
 public interface StatementVisitor {
@@ -9,4 +10,6 @@ public interface StatementVisitor {
     public void visit(WhileLoop loop);
 
     public void visit(Assignment assignment);
+
+    public void visit(IfStatement ifStatement);
 }

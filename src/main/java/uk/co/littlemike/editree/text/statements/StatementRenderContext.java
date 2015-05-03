@@ -12,7 +12,7 @@ public class StatementRenderContext {
         this(new StringBuilder(), 0);
     }
 
-    public StatementRenderContext(StringBuilder text, int indent) {
+    private StatementRenderContext(StringBuilder text, int indent) {
         this.text = text;
         this.indent = indent;
     }

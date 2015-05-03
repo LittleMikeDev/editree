@@ -6,6 +6,8 @@ import uk.co.littlemike.editree.language.statements.StatementVisitor;
 import uk.co.littlemike.editree.language.statements.VariableDeclaration;
 import uk.co.littlemike.editree.language.statements.control.IfStatement;
 import uk.co.littlemike.editree.language.statements.control.WhileLoop;
+import uk.co.littlemike.editree.text.statements.control.IfRenderer;
+import uk.co.littlemike.editree.text.statements.control.WhileLoopRenderer;
 
 public class GenericStatementRenderer implements StatementRenderer<Statement> {
 

@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class IfStatement implements Statement {
-    private List<Conditional> conditionals = new ArrayList<>();
+    private final List<Conditional> conditionals = new ArrayList<>();
     private Optional<List<Statement>> defaults = Optional.empty();
 
     public IfStatement(BooleanConstant condition, Statement... statements) {

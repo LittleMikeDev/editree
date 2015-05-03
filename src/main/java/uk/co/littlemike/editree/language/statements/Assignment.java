@@ -3,8 +3,8 @@ package uk.co.littlemike.editree.language.statements;
 import uk.co.littlemike.editree.language.expressions.Expression;
 
 public class Assignment implements Statement {
-    private String variableName;
-    private Expression value;
+    private final String variableName;
+    private final Expression value;
 
     public Assignment(String variableName, Expression value) {
         this.variableName = variableName;

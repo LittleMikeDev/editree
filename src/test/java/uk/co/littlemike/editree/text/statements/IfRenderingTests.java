@@ -35,7 +35,7 @@ public class IfRenderingTests {
     }
 
     @Test
-    public void statementsInsideIfBlockShouldBeRendererdWithIndentation() {
+    public void statementsInsideIfBlockShouldBeRenderedWithIndentation() {
         // Given
         IfStatement ifStatement = new IfStatement(
                 BooleanConstant.TRUE,

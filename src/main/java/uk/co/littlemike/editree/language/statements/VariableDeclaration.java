@@ -3,23 +3,21 @@ package uk.co.littlemike.editree.language.statements;
 import uk.co.littlemike.editree.language.expressions.Expression;
 import uk.co.littlemike.editree.language.types.Type;
 
-import java.util.Optional;
-
 public class VariableDeclaration implements Statement {
     private final Type type;
     private final String name;
-    private final Optional<Expression> initialValue;
+    private final Expression initialValue;
 
     public VariableDeclaration(Type type, String name) {
         this.type = type;
         this.name = name;
-        this.initialValue = Optional.empty();
+        this.initialValue = null;
     }
 
     public VariableDeclaration(String name, Expression initialValue) {
         this.type = initialValue.getType();
         this.name = name;
-        this.initialValue = Optional.of(initialValue);
+        this.initialValue = initialValue;
     }
 
     public String getName() {
@@ -30,7 +28,7 @@ public class VariableDeclaration implements Statement {
         return type;
     }
 
-    public Optional<Expression> getInitialValue() {
+    public Expression getInitialValue() {
         return initialValue;
     }
 
@@ -40,6 +38,6 @@ public class VariableDeclaration implements Statement {
     }
 
     public boolean hasInitialValue() {
-        return getInitialValue().isPresent();
+        return getInitialValue() != null;
     }
 }

@@ -9,7 +9,6 @@ import uk.co.littlemike.editree.text.statements.StatementRenderContext;
 import uk.co.littlemike.editree.text.statements.StatementRenderer;
 
 import java.util.List;
-import java.util.Optional;
 
 public class IfRenderer implements StatementRenderer<IfStatement> {
     private final ExpressionRenderer expressionRenderer = new ExpressionRenderer();
@@ -28,10 +27,10 @@ public class IfRenderer implements StatementRenderer<IfStatement> {
         context.appendLine("}");
     }
 
-    private void renderElseWithoutClosingBrace(Optional<List<Statement>> defaults, StatementRenderContext context) {
-        if (defaults.isPresent()) {
+    private void renderElseWithoutClosingBrace(List<Statement> defaults, StatementRenderContext context) {
+        if (!defaults.isEmpty()) {
             context.appendLine("} else {");
-            renderStatementsWithIncreasedIndent(defaults.get(), context);
+            renderStatementsWithIncreasedIndent(defaults, context);
         }
     }
 

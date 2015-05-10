@@ -23,7 +23,7 @@ public class GenericStatementRenderer implements StatementRenderer<Statement> {
     }
 
     @Override
-    public void renderToContext(Statement statement, StatementRenderContext context) {
+    public void renderToContext(Statement statement, final StatementRenderContext context) {
         statement.visit(new StatementVisitor() {
             @Override
             public void visit(VariableDeclaration declaration) {

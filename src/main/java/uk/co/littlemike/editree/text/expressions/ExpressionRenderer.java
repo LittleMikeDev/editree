@@ -5,7 +5,7 @@ import uk.co.littlemike.editree.language.expressions.*;
 public class ExpressionRenderer {
 
     public String render(Expression expression) {
-        StringBuilder text = new StringBuilder();
+        final StringBuilder text = new StringBuilder();
         expression.visit(new ExpressionVisitor() {
             @Override
             public void visit(IntegerConstant integer) {

@@ -6,12 +6,12 @@ import uk.co.littlemike.editree.language.statements.StatementVisitor;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 
 public class IfStatement implements Statement {
     private final List<Conditional> conditionals = new ArrayList<>();
-    private Optional<List<Statement>> defaults = Optional.empty();
+    private List<Statement> defaults = Collections.emptyList();
 
     public IfStatement(BooleanConstant condition, Statement... statements) {
         conditionals.add(new Conditional(condition, statements));
@@ -21,7 +21,7 @@ public class IfStatement implements Statement {
         return conditionals;
     }
 
-    public Optional<List<Statement>> getDefaults() {
+    public List<Statement> getDefaults() {
         return defaults;
     }
 
@@ -31,7 +31,7 @@ public class IfStatement implements Statement {
     }
 
     public IfStatement withDefault(Statement... statements) {
-        defaults = Optional.of(Arrays.asList(statements));
+        defaults = Arrays.asList(statements);
         return this;
     }
 

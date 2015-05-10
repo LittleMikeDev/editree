@@ -14,7 +14,7 @@ public class VariableDeclarationRenderer implements StatementRenderer<VariableDe
                     "%s %s = %s;",
                     declaration.getType().getName(),
                     declaration.getName(),
-                    expressionRenderer.render(declaration.getInitialValue().get())
+                    expressionRenderer.render(declaration.getInitialValue())
             );
         } else {
             context.appendLine(
